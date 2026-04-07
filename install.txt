@@ -1,0 +1,15 @@
+# install for linux
+pyinstaller --onedir --name transcripto-linux\
+  --add-data "models:models" \
+  transcripto.py
+
+# install for Windows (non-functional without wine)
+pyinstaller --name transcripto-windows --onedir --noconsole ^
+  --add-binary "mpv-1.dll;." ^
+  --add-data "models;models" ^
+  --hidden-import=pynput ^
+  --hidden-import=sounddevice ^
+  --hidden-import=faster_whisper ^
+  --hidden-import=ctranslate2 ^
+  --hidden-import=mpv ^
+  transcripto.py
